@@ -10,7 +10,6 @@ class Ball {
     this.directionY = 0;
     this.element = document.createElement("img");
     this.player = player;
-    this.obstacle = obstacle;
 
     this.element.src = "images/football.png";
     this.element.style.width = `${this.width}px`;

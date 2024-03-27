@@ -55,6 +55,8 @@ window.addEventListener("load", () => {
           if (game.player.directionX === 1) game.player.move("STOPX");
           break;
         case "Space":
+          game.player.kickBall("kick");
+          break;
       }
     });
   });

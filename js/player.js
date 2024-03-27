@@ -107,15 +107,19 @@ class Player {
     this.ball.kick(directionX, directionY);
   }
 
-  // didCollide(ball) {
-  //   const playerRect = this.element.getBoundingClientRect();
-  //   const ballRect = ball.element.getBoundingClientRect();
+  didCollide(obstacle) {
+    const playerRect = this.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
 
-  //   return (
-  //     playerRect.left < ballRect.right &&
-  //     playerRect.right > ballRect.left &&
-  //     playerRect.top < ballRect.bottom &&
-  //     playerRect.bottom > ballRect.top
-  //   );
-  // }
+    if (
+      playerRect.left < obstacleRect.right &&
+      playerRect.right > obstacleRect.left &&
+      playerRect.top < obstacleRect.bottom &&
+      playerRect.bottom > obstacleRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

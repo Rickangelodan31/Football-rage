@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#game-intro {
+  padding: 20px 0px;
+}
+
+#game-container {
+  display: flex;
+  /* width: 100vw; */
+  padding: 20px 0px;
+  justify-content: center;
+  flex-direction: column;
+}
+#game-container div {
+  flex-direction: column;
+}
+
+#game-screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  padding: 20px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url("../images/football-field.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#game-end {
+  display: none;
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.game-intro {
+  display: none;
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.Logo-img {
+  width: 300px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  flex-wrap: nowrap;
+  margin-top: 150px;
+  margin-left: 430px;
+}
+
+#start-button {
+  background-color: greenyellow;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+  margin-left: 500px;
+  display: block;
+}
+
+#restart-button {
+  background-color: greenyellow;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+  margin-left: 400px;
+  display: block;
+}
+/* #star-player {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+  position: absolute;
+  left: 25px;
+} */
+
+/* .football {
+  width: 50px;
+  height: 30px;
+  border-radius: 50%;
+  position: relative;
+  left: 25px;
+} */
+
+img {
+  top: 0;
+  width: 40px;
+  height: 80px;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* position: relatives; */
+  /* } 
+ 
+  
+  /* width: 20px;
+  height: 15px; */
+  /* #score {
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+  .scoring {
+    width: 20px;
+    height: 15px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    
+  } */
+}

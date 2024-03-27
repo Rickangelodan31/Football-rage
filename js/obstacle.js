@@ -14,7 +14,7 @@ class obstacle {
     this.direction = Math.random() < 0.5 ? -1 : 1;
     this.element = document.createElement("img");
 
-    this.element.src = "../images/redDot.png";
+    this.element.src = "images/redDot.png";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
     this.element.style.position = "absolute";

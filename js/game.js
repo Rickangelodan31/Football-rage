@@ -11,8 +11,9 @@ class Game {
 
     this.ball;
     this.player;
-    this.obstacles;
+    this.obstacle;
     this.score = 0;
+    this.minutes = minutes;
     this.gameOver = false;
   }
   start() {
@@ -24,7 +25,7 @@ class Game {
     this.player = new Player(this.gameScreen);
     this.ball = new Ball(this.gameScreen, this.player);
     this.player.ball = this.ball;
-    this.obstacles = this.obstacles;
+    this.obstacle = new obstacle(this.gameScreen);
     this.animate();
   }
   animate() {
@@ -35,7 +36,7 @@ class Game {
 
       if (this.gameOver) {
         this.player.element.remove();
-        this.obstacles.forEach((currentObstacle) => {
+        this.obstacle.forEach((currentObstacle) => {
           currentObstacle.element.remove();
         });
         this.gameScreen.style.display = "none";

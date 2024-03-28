@@ -22,6 +22,9 @@ class Game {
     this.goalPositionYMin = this.height / 2 - 50;
     this.goalPositionYMax = this.height / 2 + 50;
     this.goalPositionX = this.width - 100;
+    this.goalCommentaryAudio = new Audio("audio/goalcommentary.mp3");
+    this.gameOverAudio = new Audio("audio/gameover.mp3");
+    this.gameStartAudio = new Audio("audio/gamestart.mp3");
 
     // this.didcollide = new didCollide(gameScreen);
   }
@@ -36,6 +39,7 @@ class Game {
     this.ball = new Ball(this.gameScreen, this.player);
     this.player.ball = this.ball;
     this.obstacle = new Obstacle(this.gameScreen);
+    this.gameStartAudio.play();
 
     this.startTimer();
 
@@ -55,10 +59,15 @@ class Game {
       ) {
         this.score++;
         document.getElementById("score").innerText = this.score;
+
+        if (this.score % 1 === 0) {
+          this.playGoalCommentary();
+        }
         if (this.score === 3) {
           this.gameOver = true;
         }
         this.player.resetPosition();
+
         /* if (
           this.player.left <= this.goalPositionX &&
           this.player.top <= this.goalPositionY
@@ -75,8 +84,11 @@ class Game {
         } */
       }
       if (this.player.didCollide(this.obstacle)) {
-        // Handle collision
+        this.gameOverAudio.play(); // Play the game over audio
         this.gameOver = true;
+
+        this.gameStartAudio.pause();
+        this.gameStartAudio.currentTime = 0;
       }
 
       if (this.gameOver) {
@@ -91,6 +103,10 @@ class Game {
     }, 1000 / 60);
   }
 
+  playGoalCommentary() {
+    console.log("Playing goal commentary...");
+    this.goalCommentaryAudio.play();
+  }
   startTimer() {
     // Update the minutes display every minute
     this.timerIntervalId = setInterval(() => {
@@ -138,5 +154,8 @@ class Game {
     this.goalPositionYMin = this.height / 2 - 50;
     this.goalPositionYMax = this.height / 2 + 50;
     this.goalPositionX = this.width - 100;
+    this.goalCommentaryAudio = new Audio("audio/goalcommentary.mp3");
+    this.gameOverAudio = new Audio("audio/gameover.mp3");
+    this.gameStartAudio = new Audio("audio/gamestart.mp3");
   }
 }

@@ -6,23 +6,29 @@ class Game {
   constructor() {
     this.gameIntro = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
-    this.width = 1000;
-    this.height = 600;
+    this.width = 1100;
+    this.height = 800;
     this.intervalId;
+    this.timerIntervalId; // Store the interval ID for the timer
+    this.remainingMinutes = 90; // Total game time in minutes
 
     this.ball;
     this.player;
     this.obstacle;
     this.score = 0;
-    this.minutes = minutes;
+    this.minutes;
     this.gameOver = false;
     this.endScreen = document.getElementById("game-end");
+    this.goalPositionYMin = this.height / 2 - 50;
+    this.goalPositionYMax = this.height / 2 + 50;
+    this.goalPositionX = this.width - 100;
 
     // this.didcollide = new didCollide(gameScreen);
   }
   start() {
     this.gameIntro.style.display = `none`;
     this.gameScreen.style.display = `block`;
+
     this.gameScreen.style.width = `${this.width}px`;
     this.gameScreen.style.height = `${this.height}px`;
 
@@ -30,6 +36,8 @@ class Game {
     this.ball = new Ball(this.gameScreen, this.player);
     this.player.ball = this.ball;
     this.obstacle = new Obstacle(this.gameScreen);
+
+    this.startTimer();
 
     this.animate();
   }
@@ -39,16 +47,32 @@ class Game {
       this.player.render();
       this.obstacle.move();
       this.obstacle.render();
-      if (this.ball.left > this.gameScreen.clientWidth) {
+
+      if (
+        this.player.left >= this.goalPositionX &&
+        this.player.top >= this.goalPositionYMin &&
+        this.player.top <= this.goalPositionYMax
+      ) {
         this.score++;
         document.getElementById("score").innerText = this.score;
-        if (
+        if (this.score === 3) {
+          this.gameOver = true;
+        }
+        this.player.resetPosition();
+        /* if (
           this.player.left <= this.goalPositionX &&
           this.player.top <= this.goalPositionY
         ) {
-          // Player reached the goal, transition to the next stage
-          this.transitionToNextStage();
-        }
+          if (
+            this.player.left >= this.goalPositionX - 10 &&
+            this.player.left <= this.goalPositionX + 10 &&
+            this.player.top >= this.goalPositionY - 10 &&
+            this.player.top <= this.goalPositionY + 10
+          ) {
+            // Player reached near the goal, reset to starting position
+            this.player.resetPosition(); // Assuming there's a method to reset the player's position
+          }
+        } */
       }
       if (this.player.didCollide(this.obstacle)) {
         // Handle collision
@@ -62,8 +86,22 @@ class Game {
         this.gameScreen.style.display = "none";
         this.endScreen.style.display = "block";
         clearInterval(this.intervalId);
+        clearInterval(this.timerIntervalId);
       }
     }, 1000 / 60);
+  }
+
+  startTimer() {
+    // Update the minutes display every minute
+    this.timerIntervalId = setInterval(() => {
+      this.remainingMinutes--; // Decrement remaining minutes
+      document.getElementById("minutes").innerText = this.remainingMinutes; // Update the display
+      if (this.remainingMinutes <= 0) {
+        // If time runs out, end the game
+        clearInterval(this.timerIntervalId);
+        this.endGame();
+      }
+    }, 1000); // Run every 1 minute (6000 milliseconds)
   }
   addObstacle() {
     const newObstacle = new Obstacle(this.gameScreen);
@@ -77,9 +115,28 @@ class Game {
     this.obstacles.push(newObstacle);
   }
   endGame() {
+    clearInterval(this.timerIntervalId);
     // Perform actions to end the game
     this.gameScreen.style.display = "none";
-    this.gameOverScreen.style.display = "block";
+    this.endScreen.style.display = "block";
     // You can add more actions here such as displaying score, restart button, etc.
+  }
+
+  resetGame() {
+    this.gameIntro = document.getElementById("game-intro");
+    this.gameScreen = document.getElementById("game-screen");
+    this.width = 1100;
+    this.height = 800;
+    this.remainingMinutes = 90;
+    this.ball;
+    this.player;
+    this.obstacle;
+    this.score = 0;
+    this.minutes;
+    this.gameOver = false;
+    this.endScreen = document.getElementById("game-end");
+    this.goalPositionYMin = this.height / 2 - 50;
+    this.goalPositionYMax = this.height / 2 + 50;
+    this.goalPositionX = this.width - 100;
   }
 }

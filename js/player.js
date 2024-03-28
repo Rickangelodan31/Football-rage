@@ -12,7 +12,7 @@ class Player {
     this.directionY = 0;
     this.element = document.createElement("img");
 
-    this.element.src = "images/Bros.png";
+    this.element.src = "images/ronaldo.png";
     this.element.style.width = `${this.width}px`;
     this.element.style.height = `${this.height}px`;
 
@@ -22,6 +22,14 @@ class Player {
 
     /* document.addEventListener("keydown", this.handleKeyDown.bind(this));
     document.addEventListener("keyup", this.handleKeyUp.bind(this)); */
+  }
+
+  resetPosition() {
+    this.top = this.gameScreen.clientHeight / 2 - this.height;
+    this.left = 50;
+
+    this.element.style.top = `${this.top}px`;
+    this.element.style.left = `${this.left}px`;
   }
   render() {
     this.left += this.directionX * this.speed;

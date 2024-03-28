@@ -4,7 +4,7 @@ class Obstacle {
     this.width = 40;
     this.height = 40;
     this.top = -this.gameScreen.clientHeight / 2 - this.height;
-    this.left = 200;
+    this.left = 800;
     Math.round(
       Math.random() * (this.gameScreen.clientWidth - this.width - 100)
     ) + 50;

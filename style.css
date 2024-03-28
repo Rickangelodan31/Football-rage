@@ -13,17 +13,45 @@ body {
   padding: 20px 0px;
 }
 .container-Board {
-  margin-top: 0;
+  position: absolute;
+  top: 5px;
+  left: 50px;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+}
+
+.container-Board p {
+  position: relative;
+  top: 10px;
+  left: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+#score {
+  width: 20px;
+  justify-content: space-between;
+  padding: 0px 10px;
+  text-align: center;
+}
+
+#minutes {
+  width: 20px;
+  justify-content: space-between;
+  padding: 0px 10px;
+  text-align: center;
 }
 
 #game-screen {
   display: none;
-  width: 600px;
-  height: 300px;
+  width: 1100px;
+  height: 800px;
+  bottom: 0px;
+  top: 60px;
   align-content: center;
   padding: 0px 0px;
   /* overflow: hidden; */
@@ -37,13 +65,15 @@ body {
   display: none;
   font-size: 18px;
   font-family: "Verdana";
+  justify-content: center;
+  align-items: center;
 }
 
-.game-intro {
+/* .game-intro {
   display: none;
   font-size: 18px;
   font-family: "Verdana";
-}
+} */
 
 .Logo-img {
   width: 300px;
@@ -52,8 +82,20 @@ body {
   align-items: center;
   display: block;
   flex-wrap: nowrap;
-  margin-top: 150px;
+  margin-top: 50px;
   margin-left: 430px;
+}
+
+.Logo-img2 {
+  width: 300px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  flex-wrap: nowrap;
+  margin-top: 0px;
+  margin-left: 430px;
+  margin-bottom: 0px;
 }
 
 #start-button {
@@ -74,34 +116,8 @@ body {
   justify-content: center;
   width: 150px;
   height: 50px;
-  margin-left: 400px;
+  margin-left: 500px;
   display: block;
-}
-
-img {
-  top: 0;
-  width: 40px;
-  height: 80px;
-  top: 0;
-  left: 0;
-  right: 0;
-  /* position: relatives; */
-  /* } 
- 
-  
-  /* width: 20px;
-  height: 15px; */
-  /* #score {
-    display: flex;
-    position: relative;
-    justify-content: center;
-  }
-  .scoring {
-    width: 20px;
-    height: 15px;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    
-  } */
+  top: 0px;
+  margin-bottom: 100px;
 }

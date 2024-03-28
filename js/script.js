@@ -5,7 +5,6 @@ window.addEventListener("load", () => {
   let game;
 
   function startGame() {
-    console.log("start game");
     game = new Game();
     game.start();
   }
@@ -15,7 +14,7 @@ window.addEventListener("load", () => {
   });
 
   restartButton.addEventListener("click", function () {
-    startGame();
+    location.reload();
     // Last option in case you have problems on the restart => window.location.reload()
   });
 
